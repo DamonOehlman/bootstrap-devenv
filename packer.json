@@ -1,6 +1,6 @@
 {
   "variables": {
-    "locale": "",
+    "locale": "en_US",
     "ubuntu_mirror": "http://releases.ubuntu.com"
   },
 
@@ -14,7 +14,9 @@
 
       "ssh_username": "packer",
       "ssh_password": "packer",
-      "ssh_wait_timeout": "30s",
+      "ssh_wait_timeout": "30m",
+
+      "http_directory": "files",
 
       "boot_command": [
         "<esc><esc><enter><wait>",
