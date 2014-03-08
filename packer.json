@@ -1,13 +1,14 @@
 {
   "variables": {
-
+    "locale": "",
+    "ubuntu_mirror": "http://releases.ubuntu.com"
   },
 
   "builders": [{
       "type": "virtualbox-iso",
 
       "guest_os_type": "Ubuntu_64",
-      "iso_url": "http://releases.ubuntu.com/12.04.4/ubuntu-12.04.4-server-amd64.iso",
+      "iso_url": "{{user `ubuntu_mirror`}}/12.04.4/ubuntu-12.04.4-server-amd64.iso",
       "iso_checksum": "e83adb9af4ec0a039e6a5c6e145a34de",
       "iso_checksum_type": "md5",
 
@@ -19,7 +20,7 @@
         "<esc><esc><enter><wait>",
         "/install/vmlinuz noapic ",
         "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
-        "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+        "debian-installer={{user `locale`}} auto locale={{user `locale`}} kbd-chooser/method=us ",
         "hostname={{ .Name }} ",
         "fb=false debconf/frontend=noninteractive ",
         "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
