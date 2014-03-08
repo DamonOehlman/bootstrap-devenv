@@ -1,5 +1,8 @@
+PACKER_HOME ?= ~/packer
+PACKER_CACHE_DIR ?= ${PACKER_HOME}/cache
+
 build: validate
-	PACKER_CACHE_DIR=~/packer_cache ~/packer/packer build packer.json
+	PACKER_CACHE_DIR=${PACKER_CACHE_DIR} ${PACKER_HOME}/packer build packer.json
 
 validate:
-	~/packer/packer validate packer.json
+	${PACKER_HOME}/packer validate packer.json
