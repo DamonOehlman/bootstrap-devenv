@@ -2,7 +2,7 @@
 
 # install.sh
 # 
-# This is a  shell script that is designed to take a barebones ubuntu server
+# This is a shell script that is designed to take a barebones ubuntu server
 # install, and install the bits and pieces required to make it a functioning
 # development desktop environment. Basically I've broken too many desktop
 # configurations in the past so I now only work in a rebuildable VM environment
