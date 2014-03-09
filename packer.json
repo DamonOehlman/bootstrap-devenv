@@ -1,15 +1,17 @@
 {
   "variables": {
     "locale": "en_US",
-    "ubuntu_mirror": "http://releases.ubuntu.com"
+    "ubuntu_mirror": "http://releases.ubuntu.com",
+    "ubuntu_version": "12.04.4",
+    "ubuntu_checksum": "e83adb9af4ec0a039e6a5c6e145a34de"
   },
 
   "builders": [{
       "type": "virtualbox-iso",
 
       "guest_os_type": "Ubuntu_64",
-      "iso_url": "{{user `ubuntu_mirror`}}/12.04.4/ubuntu-12.04.4-server-amd64.iso",
-      "iso_checksum": "e83adb9af4ec0a039e6a5c6e145a34de",
+      "iso_url": "{{user `ubuntu_mirror`}}/{{user `ubuntu_version`}}/ubuntu-{{user `ubuntu_version`}}-server-amd64.iso",
+      "iso_checksum": "{{user `ubuntu_checksum`}}",
       "iso_checksum_type": "md5",
 
       "ssh_username": "packer",
