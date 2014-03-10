@@ -22,7 +22,6 @@ sudo hwclock --systohc --utc
 # add some helpful ppas
 sudo apt-add-repository -y ppa:gstreamer-developers/ppa
 sudo apt-add-repository -y ppa:yorba/ppa
-sudo apt-add-repository -y ppa:chris-lea/node.js
 
 # update the list of available repos
 sudo apt-get update
@@ -34,9 +33,8 @@ sudo apt-get -y install \
     git \
     xinit \
     awesome \
-    synapse lxterminal \
-    nodejs
-    
+    synapse lxterminal
+
 # clone dotfiles
 if [[ ! -d ~/dotfiles ]]; then
   git clone https://github.com/DamonOehlman/dotfiles.git ~/dotfiles
