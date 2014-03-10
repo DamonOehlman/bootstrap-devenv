@@ -15,6 +15,7 @@
   }],
 
   "builders": [{
+      "name": "djo-devenv",
       "type": "virtualbox-iso",
 
       "guest_os_type": "Ubuntu_64",
