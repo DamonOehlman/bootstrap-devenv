@@ -15,6 +15,13 @@
 # a few defines
 VERSION_SOURCECODEPRO=1.017
 
+# add some helpful ppas
+sudo apt-add-repository -y ppa:gstreamer-developers/ppa
+sudo apt-add-repository -y ppa:yorba/ppa
+
+# update the list of available repos
+sudo apt-get update
+
 # install required dependencies to get up and running
 sudo apt-get -y install \
     build-essential \
@@ -22,7 +29,7 @@ sudo apt-get -y install \
     git \
     xinit \
     awesome \
-    synapse lxterminal \
+    synapse lxterminal geary \
     virtualbox-ose-guest-utils virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
     
 # clone dotfiles
