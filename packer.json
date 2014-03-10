@@ -6,12 +6,17 @@
     "ubuntu_version": "13.10",
     "ubuntu_checksum": "4d1a8b720cdd14b76ed9410c63a00d0e",
     "user": "packer",
-    "user_fullname": "Default User"
+    "user_fullname": "Default User",
+
+    "version_node": "0.10.26"
   },
 
   "provisioners": [{
     "type": "shell",
-    "script": "install.sh"
+    "script": "install.sh",
+    "environment_vars": [
+      "VERSION_NODE={{user `version_node`}}"
+    ]
   }],
 
   "builders": [{

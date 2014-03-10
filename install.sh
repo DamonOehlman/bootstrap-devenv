@@ -14,6 +14,7 @@
 
 # a few defines
 VERSION_SOURCECODEPRO=1.017
+VERSION_NODE=${VERSION_NODE-0.10.26}
 
 # ensure we are synced to network time
 echo 'initialpass' | sudo -S ntpdate pool.ntp.org
@@ -69,3 +70,7 @@ if [[ ! -e ~/bin/bashinate ]]; then
   wget https://bitbucket.org/DamonOehlman/bashinate/raw/master/bashinate -O ~/bin/bashinate
   chmod a+x ~/bin/bashinate
 fi
+
+# install node
+echo "Installing node v$VERSION_NODE"
+~/bin/bashinate node $VERSION_NODE
