@@ -15,6 +15,10 @@
 # a few defines
 VERSION_SOURCECODEPRO=1.017
 
+# ensure we are synced to network time
+echo 'initialpass' | sudo -S ntpdate pool.ntp.org
+sudo hwclock --systohc --utc
+
 # add some helpful ppas
 sudo apt-add-repository -y ppa:gstreamer-developers/ppa
 sudo apt-add-repository -y ppa:yorba/ppa
@@ -29,8 +33,7 @@ sudo apt-get -y install \
     git \
     xinit \
     awesome \
-    synapse lxterminal geary \
-    virtualbox-ose-guest-utils virtualbox-ose-guest-x11 virtualbox-ose-guest-dkms
+    synapse lxterminal
     
 # clone dotfiles
 if [[ ! -d ~/dotfiles ]]; then
@@ -66,3 +69,6 @@ if [[ ! -e ~/bin/bashinate ]]; then
   wget https://bitbucket.org/DamonOehlman/bashinate/raw/master/bashinate -O ~/bin/bashinate
   chmod a+x ~/bin/bashinate
 fi
+
+# run the bashrc custom command to bootstrap any bashinate installed deps
+. ~/.bashrc-custom
