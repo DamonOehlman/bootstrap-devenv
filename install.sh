@@ -22,6 +22,7 @@ sudo hwclock --systohc --utc
 # add some helpful ppas
 sudo apt-add-repository -y ppa:gstreamer-developers/ppa
 sudo apt-add-repository -y ppa:yorba/ppa
+sudo apt-add-repository -y ppa:chris-lea/node.js
 
 # update the list of available repos
 sudo apt-get update
@@ -33,7 +34,8 @@ sudo apt-get -y install \
     git \
     xinit \
     awesome \
-    synapse lxterminal
+    synapse lxterminal \
+    nodejs
     
 # clone dotfiles
 if [[ ! -d ~/dotfiles ]]; then
@@ -69,6 +71,3 @@ if [[ ! -e ~/bin/bashinate ]]; then
   wget https://bitbucket.org/DamonOehlman/bashinate/raw/master/bashinate -O ~/bin/bashinate
   chmod a+x ~/bin/bashinate
 fi
-
-# run the bashrc custom command to bootstrap any bashinate installed deps
-. ~/.bashrc-custom
