@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # install.sh
-# 
+#
 # This is a shell script that is designed to take a barebones ubuntu server
 # install, and install the bits and pieces required to make it a functioning
 # development desktop environment. Basically I've broken too many desktop
@@ -9,12 +9,13 @@
 # that I know I can rebuild easily.
 #
 # To execute this script, run the following:
-# 
+#
 # To be completed
 
 # a few defines
-VERSION_SOURCECODEPRO=1.017
+VERSION_SOURCECODEPRO=${VERSION_SOURCECODEPRO-1.017}
 VERSION_NODE=${VERSION_NODE-0.10.26}
+VERSION_LIGHTTABLE=${VERSIONT_LIGHTTABLE-0.6.5}
 
 # ensure we are synced to network time
 echo 'initialpass' | sudo -S ntpdate pool.ntp.org
@@ -23,6 +24,7 @@ sudo hwclock --systohc --utc
 # add some helpful ppas
 sudo apt-add-repository -y ppa:gstreamer-developers/ppa
 sudo apt-add-repository -y ppa:yorba/ppa
+sudo apt-add-repository -y ppa:synapse-core/testing
 
 # update the list of available repos
 sudo apt-get update
@@ -62,6 +64,17 @@ if [[ ! -d ~/.fonts/SourceCodePro ]]; then
   mkdir -p ~/.fonts
   mv ~/Downloads/SourceCodePro_* ~/.fonts/SourceCodePro
   fc-cache -vf
+fi
+
+# ensure we have an opt folder
+sudo mkdir -p /opt
+
+# if we don't have lighttable installed do that now
+if [[ ! -d /opt/LightTable ]]; then
+  rm -rf ~/Downloads/LightTable*
+  wget https://d35ac8ww5dfjyg.cloudfront.net/playground/bins/${VERSION_LIGHTTABLE}/LightTableLinux64.tar.gz -O ~/Downloads/LightTableLinux64.tar.gz
+  tar xf LightTableLinux64.tar.gz
+  sudo mv ~/Downloads/LightTable /opt/LightTable
 fi
 
 # bring in bashinate
